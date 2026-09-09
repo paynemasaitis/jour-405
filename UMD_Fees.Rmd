@@ -1,0 +1,43 @@
+---
+title: "UMD Fees"
+---
+
+Follow along with the demo to learn how to calculate percentage change using R and the Tidyverse. You should get started by loading the tidyverse in a new R block.
+
+
+### Task 1: Load the tidyverse
+
+
+```{r}
+library(tidyverse)
+```
+
+
+
+
+### Task 2: Load the UMD Fees dataset from https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/umd_fees.csv
+
+```{r}
+umd_fees <- read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/umd_fees.csv")
+```
+
+### Task 3: Calculate the percentage change in each category between Fall 2026 and Fall 2021 using `mutate()`
+
+```{r}
+umd_fees_pct <- umd_fees |> mutate(pct_change = (`Fall 2026`- `Fall 2021`)/`Fall 2021` * 100)
+```
+
+
+
+### Task 4: Describe the results
+
+Write a few sentences about what you found in those percentages. What's the story here? What questions do you have?
+
+The largest percentage increase was student sustainability, though it only increased by 18 dollars. The most notable change, in terms of total increase, was the shuttle bus, which fostered the largest increase of 130 dollars across six years. Student activities and recreation services also had similar percentage increases, staying within the 20-30% range.
+
+A potential story could be that the University of Maryland is looking to initiate payment for student sustainability and the student counseling center, which both costed a minimal amount in 2021, but now combine for 82 dollars in fees in 2026. The story could revolve around the school's efforts to strengthen two new initiatives.
+
+One question I would have is what caused the need for student counseling investment in 2022 and 2023.
+
+
+When you are done, save your work, switch to GitHub Desktop, then add, commit and push your changes to GitHub and submit the URL of the notebook in ELMS.
