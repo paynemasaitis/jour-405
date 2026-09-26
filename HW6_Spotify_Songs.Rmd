@@ -1,0 +1,56 @@
+---
+title: "HW6_Spotify_Songs"
+---
+
+In this assignment, you will be working with a dataset of songs played on Spotify in 2020, and you'll be writing code to explore the range of danceability scores in the data, using standard deviation and histograms. You'll also write up your findings.
+
+### Task 1: Load the tidyverse
+
+```{r}
+library(tidyverse)
+```
+
+### Task 2: Load the Spotify Songs dataset from https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/spotify_2020.csv
+
+```{r}
+spotify_songs <- read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/spotify_2020.csv")
+```
+
+### Task 3: Calculate the mean and standard deviation of the danceability scores
+
+Write code to calculate the mean standard deviation of the danceability scores in the Spotify dataset. Display those.
+
+```{r}
+spotify_songs |> summarize(mean = mean(danceability), sd = sd(danceability))
+```
+
+### Task 4: Create a histogram of the danceability scores
+
+Write code to create a histogram of the danceability scores in the Spotify dataset, based on the example we did in class.
+
+```{r}
+spotify_songs |> 
+  ggplot() + 
+  geom_histogram(aes(x = danceability), binwidth = 0.5) +
+  geom_vline(aes(xintercept = mean(danceability)), color = "red", linetype = "dashed", size = 1) +
+  geom_vline(aes(xintercept = mean(danceability) - sd(danceability)), color = "blue", linetype = "dashed", linewidth = 1) +
+  geom_vline(aes(xintercept = mean(danceability) + sd(danceability)), color = "blue", linetype = "dashed", linewidth = 1)
+```
+
+### Task 5: Add a line to the histogram for the mean danceability score
+
+Write code to add a vertical line to the histogram for the mean danceability score, based on the example in class.
+
+```{r}
+```
+
+### Task 6: Describe our results
+
+Write a few sentences about the distribution of danceability scores in the Spotify dataset. Is it a normal distribution, or is it skewed in one direction? What does the mean and distribution tell us about the songs in the dataset?
+
+The distribution of the danceability scores for Spotify is skewed left. The mean sits at 0.67 with the highest amount of scores falling between 0.25 and 0.75. A number of scores came in over 1.0, which helped increase the mean of the entire group. The data set evidently contains more songs with a higher danceability score than songs with a low danceability score. Many of these songs are suitable for a dancing or rhytmic environment.
+
+### Task 7: Save Your Work and Put it on GitHub
+
+Save this notebook, then commit it to your local repository. Push the changes to your GitHub repository and submit the URL for this file in ELMS.
+
